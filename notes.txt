@@ -1,0 +1,234 @@
+=>NPM: 
+    * NPM manages packages
+    * It is a standard repository for all packages
+
+caret => it automatically updates minor version updates for packages
+tilde => it automatically updates major version updates for packages
+
+parcel is a bundler
+
+package.json => it consists of configuration file for NPM
+package-lock.json => keeps tracks of exact versions of all the dependencies
+node_modules => it holds the code for all  transitive dependencies need for the project 
+bundler => bundler bundles our coode so that it is ready for pushing to production
+gitignore => holds all files do not want to push on github
+
+there are two type of dependencies while installing packages
+    * -D =>dev dependency
+    * normal
+   
+.gitignore:
+    create a new file and name it as .gitignore 
+    Enter the file name u dont want to push to github
+    
+Install npm and its packages
+ npm init  
+ npm install -D parcel
+ npm install react
+ npm install react-dom
+
+ to execute package 
+ npx parcel filename => npx parcel index.html
+
+ ----------------------------------------------------
+DAY 3:
+
+=> instead of running npx parcel index.hmtl each time we can add our start command in scripts file in package.json 
+
+  "scripts": {
+    "test": "jest",
+    // add here
+    // for dev build
+    "start": "parcel index.html",
+    // for prod build
+    "build":"parcel build index.html"
+
+  },
+
+
+  then instead of using npx parcel index.html we can use   
+    // dev build
+        =>  npm run start (OR) npm start
+    // prod build
+        => npm run build   
+
+
+=>JSX: 
+    * it is not html inside javascript . it consists of html like syntax
+    *JS engine cannot understand JSX as it is not pure javascript
+
+    Then how it is working in REACT?
+    * parcel transpiled JSX before reaching JS engine  with the help of babel package
+    *transpiled means converting into the code which browser understands 
+
+=> how React.createElement works?
+                                                            Render 
+ React.createElement => React element(which is  JS object) ========> Html element
+
+=> How JSX works ?
+
+      babel converts                                                             Render 
+ JSX ===============>React.createElement => React element(which is  JS object) ========> Html element
+
+multiline jsx : use ()
+(
+    <h1>
+helllo
+</h1>
+)
+
+=> component: It is just a normal javascript function which returns some jsx element
+    * whatever we see in a browser is a component
+example: header , footer ,cards etc all are components
+
+2 types of components
+    * class based components (OLD METHOD)
+    * Function based component (NEW METHOD)
+
+    FUNCTION BASED component:
+        * It is just a normal javascript function which returns some jsx element
+
+        *****IMPOTANT Rule: Name should start with Capital letter*********
+
+        example: 
+            const Heading = ()=>{
+                return <h1>hello</h1>
+            }
+           root.render(<Heading/>) 
+
+    How to render  React element vs React functional component?
+    React element: root.render(component); 
+
+    functional component:
+        <component name />
+        example: root.render(<Componentname/>);    
+
+   => WHAT IS COMPONENT COMPOSISTION:
+        rendering 1 or more components inside other component
+        example:
+        const Title = () =><h1>Component Composistion</h1>;
+
+        const Title2 = () =>(
+            <div>
+                <Title/>
+                <h1>React functional component</h1>
+            </div>
+        );
+                
+        const root=ReactDOM.createRoot(document.getElementById("root"));
+        root.render(<Title2 />);
+=> how to use javascript and react element inside react functional component:
+    * using {}
+    ex:
+    const num  = 1000;  // js
+    const title = ()=> {    //react component
+        <h2></h2>
+    }
+
+    const Heading = () => {     //functional component
+        <div>
+            {num}
+            {title()}
+            <h1>hi!</h1>
+        </div>
+    }
+
+    -----------------------------------
+    DAY 5:
+
+    => PROPS:
+            * props is a argument to a function
+            * props are used for passing valus dynamically
+
+food app
+/**
+ * Header
+ *  - Logo
+ *  - Navitems
+ * Body
+ *  - Search
+ *  -Restaurant Container
+ *      -Restaurant card
+ * Footer
+ *  -CopyRight
+ *  -Address
+ *  -Link
+ *  -Contact
+ */
+
+
+=> IMPORT AND EXPORT
+    * There are two types of import and EXPORT
+            => DEFAULT IMPORT/ EXPORT
+            => NAMED IPORT / EXPORT
+
+    DEFAULT  IMPORT/ EXPORT :
+     * There can be only one default export in a file 
+
+       ex:
+          import RestroCard from "./RestroCard";
+          export default RestroCard; 
+
+     NAMED IPORT / EXPORT:
+        If u have more than one export in a file then u can use named import/export
+
+        ex:
+          export const RESLOGO_URL =  "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/";
+          import { RESLOGO_URL } from "../utils/constant";      
+
+
+=> REACT HOOKS:
+    * It is just a js function
+
+    It has many hooks among that 2 hooks will be widely used . they are
+        * useState()
+             => creates super powerful state variable
+             desc:=> when ever a state variable updates React automatically re renders the component
+        * useEffect()
+            =>it will be called after the component completes the render
+            
+=> VIRTUAL DOM : It is a representaion of actual DOM
+
+WHY REACT IS FAST?
+    * React has efficinet DOM Manipulation
+    * DIFF algorithm
+    * React finds the difference between virtual dom and updates the UI
+
+-- - - - -  --  -- - - - -  - - - -  - - - - - -  -----------
+
+EPISODE 6:
+MONOLITH ARCHITECTURE:(OLD WAY)
+Front end(FE) , backend(BE) , api, auth,sms,DB everything will be inside the project itself
+
+MICROSERVICES ARCHITECTURE:(LATEST):
+    * FE , BE, auth all will be considers as a small separate service and run on different host
+    * they will  be connect to eachother using a call
+
+WHEN API CALL IS MADE:
+    
+        LOAD THE APP => RENDER => API CALL => RENDERS
+
+
+ ---------------------------------------------------
+
+ EPISODE 7:   (short cut to create componenet :  rafce)
+
+ useEffect({}) => it is called whenever the component completes the renders      
+ useEffect({},[]) => it is called only once (initially) the components completes the render for first time
+ useEffect({},[dependency componenet]) => it is called everytime when that dependency componenet is being rendered.
+
+=> Routing :
+
+npm i react-router-dom
+
+packages used in router:
+    import {createBrowserRouter,RouterProvider} from "react-router-dom";
+
+    createBrowserRouter => where we place the config for routing 
+    RouterProvider => Uses the config and render the page
+    Outlet => whenever url is changed it renders that component inside applayout along with applayout component
+    Link => renders the specific component not the whole page
+
+=> 2 types of Routing:
+    Client side Routing
+    Server side Routing
