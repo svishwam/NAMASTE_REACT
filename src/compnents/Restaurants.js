@@ -34,9 +34,9 @@ const Restaurant = ()=>{
         return <ShimmerUI/>;
     }
 
-   const{name,costForTwoMessage,cuisines}= ResMenu.cards[0].card.card.info;
+   const{name,costForTwoMessage,cuisines}= ResMenu?.cards[0]?.card?.card?.info;
    
-   const{itemCards}= ResMenu.cards[2].groupedCard.cardGroupMap.REGULAR.cards[1].card.card;
+   const{itemCards}= ResMenu?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card;
    console.log(itemCards);
 
     return(

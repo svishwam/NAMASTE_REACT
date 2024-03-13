@@ -83,7 +83,7 @@ example: header , footer ,cards etc all are components
 
 2 types of components
     * class based components (OLD METHOD)
-    * Function based component (NEW METHOD)
+    * Function based component (NEW METHOD)  => covered in episode 8
 
     FUNCTION BASED component:
         * It is just a normal javascript function which returns some jsx element
@@ -232,3 +232,31 @@ packages used in router:
 => 2 types of Routing:
     Client side Routing
     Server side Routing
+
+
+    ----------------------------------------------------------------------
+
+    EPISODE 8: last 45 min need to watch
+    => CLASS BASED COMPONENT:
+
+    it is a javascript class which extends  React.component and it has a render method which returns jsx;
+
+    syntax:
+
+    class Component name  extends React.component{
+        render(){
+            return(
+                <div></div>
+                <child/>
+            )
+        }
+    }
+
+ => LIFE CYCLE OF CLASS BASED COMPONENTS:   
+
+-> HOW CLASS COMPONENT IS MOUNTED ON WEBPAGE:
+    if class component and has child component then  it will display in this order 
+        parent constructor -> parent render -> child constructor -> child render
+
+    if class component and its child component has ComponentDidMount() then  it will display in this order 
+                parent constructor -> parent render -> child constructor -> child render -> child Mount -> parent Mount
