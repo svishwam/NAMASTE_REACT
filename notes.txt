@@ -260,3 +260,20 @@ packages used in router:
 
     if class component and its child component has ComponentDidMount() then  it will display in this order 
                 parent constructor -> parent render -> child constructor -> child render -> child Mount -> parent Mount
+
+------------------------------------------------------
+EPISODE 9: 
+
+CREATE OWN CUSTOM HOOKs => topic was covered
+
+=>LAZY LOADING : (IN OTHER TERMS)
+            * Chunking
+            * code spliting
+            * Dynamic bundling
+            * lazy Loading
+            *on demand loading
+
+lazy() => is a method which is named import from react
+syntax :  const variable name = lazy(()=>import("path"))
+example:  const About = lazy(()=>import("./compnents/about"))
+

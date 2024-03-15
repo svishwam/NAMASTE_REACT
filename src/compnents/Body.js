@@ -3,14 +3,13 @@ import RestroCard from "./RestroCard";
 import { useState,useEffect } from "react";
 import ShimmerUI from "./ShimmerUi";
 import { Link } from "react-router-dom";
+import { RestaurantList } from "../utils/constant";
+import useOnlineStatus from "../utils/useOnlinStatus";
+import useRestaurantListAPI from "../utils/useRestaurantListAPI";
 
 const Body = () => {
-
-        //const [listOfRestaurant,setlistOfRestaurant] = useState(ResList);
         const [listOfRestaurant,setlistOfRestaurant] = useState([]);
-
-        const [filteredListOfRestaurant, setfilteredListOfRestaurant] = useState([]);
-        
+        const [filteredListOfRestaurant,setfilteredListOfRestaurant] = useState([]);
         const [inputTxt,setinputTxt] = useState("");
 
     useEffect(()=>{
@@ -19,9 +18,7 @@ const Body = () => {
     },[]);
 
     const fetchData = async ()=>{
-        const Data = await fetch(
-            "https://www.swiggy.com/dapi/restaurants/list/v5?lat=9.918297899999999&lng=78.1343507&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-            );
+        const Data = await fetch(RestaurantList);
 
             const json = await Data.json();
             console.log(json);
@@ -37,12 +34,27 @@ const Body = () => {
 
 
 
+    const OnlineStatus = useOnlineStatus();
+
+
+    if(OnlineStatus === false){
+        return(
+            <h1>
+                Looks like you're Offline!! please check your internet connection;
+            </h1>
+        );
+    }
+
+
   //shimmer UI or Conditional Rendering
     if(listOfRestaurant.length===0){
         return <ShimmerUI/>
     }
 
+    // filteredListOfRestaurant
 
+
+  
 
     return (
         <div className="main">
@@ -58,6 +70,7 @@ const Body = () => {
                                 Restaurant.info.name.toLowerCase().includes(inputTxt.toLowerCase())
                             ))
                             setfilteredListOfRestaurant(filteredRestaurant);
+
                         }
                     }>Search</button>
                 </div> 
@@ -77,6 +90,7 @@ const Body = () => {
                 </div>
 
             </div>
+            
 
             <div className="restrocontainer">
 
@@ -87,9 +101,10 @@ const Body = () => {
                            <RestroCard  resData={Restaurant}/>   
                            </Link>  
                         ))
+                        
                 }
 
-
+                    
 
 
                
