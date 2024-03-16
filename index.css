@@ -1,4 +1,4 @@
-.Header{
+/* .Header{
     display: flex;
     justify-content: space-between;
     border: 4px solid black;
@@ -66,4 +66,8 @@
 }
 .filter{
     margin-left: 20px;
-}
+} */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

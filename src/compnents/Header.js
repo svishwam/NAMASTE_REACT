@@ -10,17 +10,17 @@ const Header = () => {
     const OnlineStatus = useOnlineStatus();
 
     return(
-     <div className="Header">
+     <div className="flex justify-between bg-purple-200 m-4 p-4 shadow-lg">
         <div className="logo-container">
             <img src={APPLOGO_URL} width="128" height="128"/>
         </div>
-        <div className="nav">
-            <ul className="nav-item"> 
-                <li>OnlineStatus:{OnlineStatus? "✅" : "🔴"}</li>
-                <li><Link to="/home">Home</Link></li>
-                <li><Link to="/About">About Us</Link></li>
-                <li><Link to="/Contact">Contact Us</Link></li>
-                <li><Link to="/Cart">Cart</Link></li>
+        <div className="flex items-center">
+            <ul className="flex"> 
+                <li className="px-4">OnlineStatus:{OnlineStatus? "✅" : "🔴"}</li>
+                <li className="px-4"><Link to="/home">Home</Link></li>
+                <li className="px-4"><Link to="/About">About Us</Link></li>
+                <li className="px-4"><Link to="/Contact">Contact Us</Link></li>
+                <li className="px-4"><Link to="/Cart">Cart</Link></li>
                 <button 
                 className="login-btn"
                 onClick={()=>{

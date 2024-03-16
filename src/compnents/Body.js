@@ -8,8 +8,8 @@ import useOnlineStatus from "../utils/useOnlinStatus";
 import useRestaurantListAPI from "../utils/useRestaurantListAPI";
 
 const Body = () => {
-        const [listOfRestaurant,setlistOfRestaurant] = useState([]);
-        const [filteredListOfRestaurant,setfilteredListOfRestaurant] = useState([]);
+        const [listOfRestaurant,setlistOfRestaurant] = useState(null);
+        const [filteredListOfRestaurant,setfilteredListOfRestaurant] = useState(null);
         const [inputTxt,setinputTxt] = useState("");
 
     useEffect(()=>{
@@ -47,23 +47,18 @@ const Body = () => {
 
 
   //shimmer UI or Conditional Rendering
-    if(listOfRestaurant.length===0){
+    if(listOfRestaurant==null){
         return <ShimmerUI/>
     }
 
-    // filteredListOfRestaurant
-
-
-  
-
     return (
         <div className="main">
-            <div className="filters">
+            <div className="filters flex justify-center">
                 <div className="search">
-                    <input type="text" name="SearchBar" value={inputTxt} onChange={(e)=>{
+                    <input type="text" placeholder="search for Restaurant and Food" name="SearchBar" value={inputTxt} onChange={(e)=>{
                         setinputTxt(e.target.value);
-                    }}/>
-                    <button className="search-btn" onClick={
+                    }} className="bg-gray-200 px-4 py-1 m-4 rounded-lg shadow-lg w-72"/>
+                    <button className="search-btn  px-4 py-1 m-4 bg-green-200 rounded-lg shadow-lg" onClick={
                         ()=>{
                             console.log(inputTxt);
                             const filteredRestaurant = listOfRestaurant.filter((Restaurant)=>(
@@ -74,8 +69,8 @@ const Body = () => {
                         }
                     }>Search</button>
                 </div> 
-                <div className="filter">
-                <button className="filter-btn" 
+                <div className="filter flex">
+                <button className="filter-btn bg-gray-200 px-4 py-1 m-4 rounded-lg shadow-lg " 
                         onClick={
                             ()=>{
                                 const filteredList = listOfRestaurant.filter(
@@ -92,7 +87,7 @@ const Body = () => {
             </div>
             
 
-            <div className="restrocontainer">
+            <div className="restrocontainer bg-blue-50 flex flex-wrap text-wrap m-4 p-4">
 
                 {
                         filteredListOfRestaurant.map((Restaurant)=>(
