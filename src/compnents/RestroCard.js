@@ -3,7 +3,7 @@ const RestroCard = (props) => {
     const { resData} = props;
     const { name,cuisines,avgRating,sla,cloudinaryImageId} = resData?.info;       // ? -> option chaining
     return(
-        <div className="restro w-[300px] h-[400px] m-4 p-4  bg-white text-wrap justify-center rounded-2xl shadow-xl">
+        <div className="restro w-[300px] h-[420px] m-4 p-2 bg-white text-wrap justify-center rounded-2xl shadow-xl">
             <img className="h-52 w-full p-2 rounded-3xl" 
                src={ RESLOGO_URL+cloudinaryImageId } alt="res-logo"/>
             <h2 className="font-bold p-2 ">{name}</h2>
@@ -13,6 +13,18 @@ const RestroCard = (props) => {
 
         </div>
     )
+};
+
+export const withPromotedLabel =(RestroCard)=>{
+    return(props)=>{
+        return(
+            <div>
+                <label className="absolute bg-black text-white p-2 m-2 rounded-lg">Promoted</label>
+                <RestroCard {...props}/>
+            </div>
+        );
+
+    };
 }
 
 export default RestroCard; // named export

@@ -1,5 +1,5 @@
 import ResList from "../utils/resList";   // default import
-import RestroCard from "./RestroCard";
+import RestroCard,{withPromotedLabel} from "./RestroCard";
 import { useState,useEffect } from "react";
 import ShimmerUI from "./ShimmerUi";
 import { Link } from "react-router-dom";
@@ -11,6 +11,7 @@ const Body = () => {
         const [listOfRestaurant,setlistOfRestaurant] = useState(null);
         const [filteredListOfRestaurant,setfilteredListOfRestaurant] = useState(null);
         const [inputTxt,setinputTxt] = useState("");
+        const RestaurantCardPromoted = withPromotedLabel(RestroCard);
 
     useEffect(()=>{
         console.log("UseEffect");
@@ -93,7 +94,11 @@ const Body = () => {
                         filteredListOfRestaurant.map((Restaurant)=>(
                             // while looping each iteration should be unique . so that we are giving key
                            <Link key={Restaurant.info.id} to={"/Restaurants/"+Restaurant.info.id}>
-                           <RestroCard  resData={Restaurant}/>   
+                           {Restaurant.info.avgRating>4.4 ? (
+                           <RestaurantCardPromoted  resData={Restaurant}/> ) : (
+                           <RestroCard  resData={Restaurant}/>
+                           ) }
+                             
                            </Link>  
                         ))
                         
