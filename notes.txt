@@ -277,3 +277,7 @@ lazy() => is a method which is named import from react
 syntax :  const variable name = lazy(()=>import("path"))
 example:  const About = lazy(()=>import("./compnents/about"))
 
+----------------------------------------------------------
+EPISODE 11:
+REACT CONTEXT : Solves the issue of props drilling 
+            => It is used to pass data from one component to another

@@ -21,5 +21,5 @@ return(
     </div>
    
 )
-};
+}
 export default RestaurantCategory;

@@ -15,11 +15,11 @@ const ItemList = ({items}) => {
                     
                     <div className="w-3/12 p-4">
                         <div>
-                        <img src={RESLOGO_URL + item.card.info.imageId} className="w-full  bg-gray-100"/> 
+                        <img src={RESLOGO_URL + item.card.info.imageId} className="w-[130px] h-[100px] bg-gray-100 m-4"/> 
                         </div>
                         
-                        <div className="relative">
-                            <button className="bg-black text-green-700 border px-6 border-black ">ADD +</button>  
+                        <div className="relative w-[100px]">
+                            <button className="bg-white text-green-700 border rounded-md px-4 py-2 absolute  right-0 bottom-0 border-grey ">ADD +</button>  
                         </div>
                          
                         
