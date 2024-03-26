@@ -12,12 +12,13 @@ const Restaurant = ()=>{
         return <ShimmerUI/>;
     }
 
-   const{name,costForTwoMessage,cuisines}= ResMenu?.cards[0]?.card?.card?.info;
+   console.log(ResMenu); 
+   const{name,costForTwoMessage,cuisines}= ResMenu?.cards[2]?.card?.card?.info;
    
-   const{itemCards}= ResMenu?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card;
+   const{itemCards}= ResMenu?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card;
    console.log(itemCards);
-   console.log("Menu", ResMenu?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards) ;
-   const categories = ResMenu?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter((c)=>(
+   console.log("Menu", ResMenu?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards) ;
+   const categories = ResMenu?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter((c)=>(
     c.card?.card?.["@type"]=="type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
    ));
    console.log("Categories", categories) ;

@@ -1,13 +1,17 @@
 import { APPLOGO_URL } from "../utils/constant";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlinStatus";
+import UserContext from "../utils/UserContext";
 
 const Header = () => {
 
     const [btnName,setbtnName] = useState("Login");
 
     const OnlineStatus = useOnlineStatus();
+
+    const {loggedInUser} = useContext(UserContext);
+    console.log(loggedInUser);
 
     return(
      <div className="flex justify-between bg-purple-200 m-4 p-4 shadow-lg">
@@ -31,6 +35,7 @@ const Header = () => {
                 >
                     {btnName}
                 </button>
+                <li className="px-4"><Link to="/Cart">{loggedInUser}</Link></li>
             </ul>
             
         </div>

@@ -1,5 +1,10 @@
+import { useContext } from "react";
+import UserContext from "../utils/UserContext";
 import { RESLOGO_URL } from "../utils/constant";   // named import
+
+
 const RestroCard = (props) => {
+    const {loggedInUser} = useContext(UserContext);
     const { resData} = props;
     const { name,cuisines,avgRating,sla,cloudinaryImageId} = resData?.info;       // ? -> option chaining
     return(
@@ -10,6 +15,7 @@ const RestroCard = (props) => {
             <h4 className="text-wrap p-2 ">{cuisines.join(", ")}</h4>
             <h4 className="p-2">{avgRating}</h4>
             <h4 className="p-2">{sla.slaString}</h4>
+            {/* <h4 className="p-2">User:{loggedInUser}</h4> */}
 
         </div>
     )

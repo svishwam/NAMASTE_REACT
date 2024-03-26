@@ -1,5 +1,5 @@
 
-import React, { lazy,Suspense } from "react";
+import React, { lazy,Suspense, useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./compnents/Header";
 import Body from "./compnents/Body";
@@ -10,6 +10,7 @@ import Home from "./compnents/Home";
 import Error from "./compnents/Error";
 import { createBrowserRouter,RouterProvider,Outlet } from "react-router-dom";
 import Restaurant from "./compnents/Restaurants";
+import UserContext from "./utils/UserContext";
 
 
 const footer = () => {
@@ -21,11 +22,26 @@ const footer = () => {
 };
 
 const AppLayout = () => {
+
+    const [userName,setuserName] = useState();
+
+    useEffect(()=>{
+        const data = {
+            name:"Vishwa",
+        }
+        setuserName(data.name);
+    },[]);
+
     return (
+        <UserContext.Provider value={{
+            loggedInUser:userName,
+            setuserName,
+            }}>
         <div>
             <Header/>
             <Outlet/>
         </div>
+        </UserContext.Provider>
     )
 };   
 

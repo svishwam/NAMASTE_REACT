@@ -278,6 +278,10 @@ syntax :  const variable name = lazy(()=>import("path"))
 example:  const About = lazy(()=>import("./compnents/about"))
 
 ----------------------------------------------------------
-EPISODE 11:
+EPISODE 11: watch again
 REACT CONTEXT : Solves the issue of props drilling 
-            => It is used to pass data from one component to another
+            => Stores data inside Create Context and data can be fetched any where by using useContext
+     * createContext => used to create react context and stores data inside it
+     * useContext => used to access ReactContext
+     * provider => used to display the value from api 
+

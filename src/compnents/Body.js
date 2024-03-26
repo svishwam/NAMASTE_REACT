@@ -1,17 +1,19 @@
 import ResList from "../utils/resList";   // default import
 import RestroCard,{withPromotedLabel} from "./RestroCard";
-import { useState,useEffect } from "react";
+import { useState,useEffect ,useContext} from "react";
 import ShimmerUI from "./ShimmerUi";
 import { Link } from "react-router-dom";
 import { RestaurantList } from "../utils/constant";
 import useOnlineStatus from "../utils/useOnlinStatus";
 import useRestaurantListAPI from "../utils/useRestaurantListAPI";
+import UserContext from "../utils/UserContext";
 
 const Body = () => {
         const [listOfRestaurant,setlistOfRestaurant] = useState(null);
         const [filteredListOfRestaurant,setfilteredListOfRestaurant] = useState(null);
         const [inputTxt,setinputTxt] = useState("");
         const RestaurantCardPromoted = withPromotedLabel(RestroCard);
+        
 
     useEffect(()=>{
         console.log("UseEffect");
@@ -54,6 +56,14 @@ const Body = () => {
 
     return (
         <div className="main">
+                        {/* <div className="m-4 p-4">
+                    <label >UserName:</label>
+                    <input type="text"  value={loggedInUser} onChange={(e)=>(
+                        setUserName(e.target.value)
+                        )}
+                    />
+
+                <div/>   */}
             <div className="filters flex justify-center">
                 <div className="search">
                     <input type="text" placeholder="search for Restaurant and Food" name="SearchBar" value={inputTxt} onChange={(e)=>{
@@ -84,9 +94,8 @@ const Body = () => {
                 >
                     TopRatedRestaurant</button>
                 </div>
-
+                
             </div>
-            
 
             <div className="restrocontainer bg-blue-50 flex flex-wrap text-wrap m-4 p-4">
 
