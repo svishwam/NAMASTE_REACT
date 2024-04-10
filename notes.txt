@@ -278,10 +278,17 @@ syntax :  const variable name = lazy(()=>import("path"))
 example:  const About = lazy(()=>import("./compnents/about"))
 
 ----------------------------------------------------------
-EPISODE 11: watch again
+EPISODE 11: watch again need to do carosel and final 25 min
+
 REACT CONTEXT : Solves the issue of props drilling 
             => Stores data inside Create Context and data can be fetched any where by using useContext
      * createContext => used to create react context and stores data inside it
      * useContext => used to access ReactContext
      * provider => used to display the value from api 
+
+ ----------------------------------------------------------
+ EPISODE 12 : REDUX
+
+ npm i @reduxjs/toolkit
+ npm i react-redux    
 
