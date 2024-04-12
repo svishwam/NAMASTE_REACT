@@ -14,6 +14,7 @@ const Header = () => {
     const {loggedInUser} = useContext(UserContext);
     console.log(loggedInUser);
     const cartItem = useSelector((Store)=>Store.cart.items);
+    console.log(cartItem);
     return(
      <div className="flex justify-between bg-purple-200 m-4 p-4 shadow-lg">
         <div className="logo-container">

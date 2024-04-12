@@ -13,6 +13,7 @@ import Restaurant from "./compnents/Restaurants";
 import UserContext from "./utils/UserContext";
 import { Provider } from "react-redux";
 import AppStore from "./utils/AppStore";
+import Cart from "./compnents/Cart";
 
 const footer = () => {
     return(
@@ -76,9 +77,13 @@ const appRouter = createBrowserRouter([
                 element:<Contact/>,
             },
             {
+                path:"/cart",
+                element:<Cart/>,
+            },
+            {
                 path:"/Restaurants/:resId",
                 element:<Restaurant/>,
-            }
+            },
         ],
 
     },
